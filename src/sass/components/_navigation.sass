@@ -1,0 +1,38 @@
+@use "../abstracts/variables" as *
+@use "../abstracts/mixins" as *
+
+.navigation
+  padding: 2.5rem 1rem
+  background-color: $color-dark
+
+  &__wrapper
+    display: flex
+    justify-content: space-between
+
+  &__list
+    display: flex
+    gap: 8rem
+
+  &__link
+    @include font($weight: 700, $size: 1.8rem, $color: $color-white)
+    text-transform: uppercase
+    transition: opacity .3s
+    position: relative
+
+    &_current
+
+      &::after
+        content: ""
+        display: block
+        position: absolute
+        top: 4rem
+        width: 100%
+        height: .3rem
+        background-color: #826550
+
+    &:hover
+      opacity: .8
+
+  &__signin
+    display: inline-flex
+    gap: 2rem

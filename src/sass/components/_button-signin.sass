@@ -1,0 +1,15 @@
+@use "../abstracts/variables" as *
+@use "../abstracts/mixins" as *
+
+.button-signin
+  display: inline-flex
+  gap: 2rem
+  cursor: pointer
+
+  &__icon
+    max-width: 1.6rem
+    max-height: 1.6rem
+
+  &__text
+    @include font($weight: 700, $size: 1.8rem, $color: $color-white)
+    text-transform: uppercase
