@@ -15,8 +15,9 @@
     @media only screen and (min-width: 1800px)
       @content
 
-@mixin font($name: "main", $weight: 400, $size: 1.6rem, $color: inherit)
+@mixin font($name: "main", $weight: 400, $size: 1.6rem, $color: inherit, $line-height: $size)
   font-family: map.get($fonts, $name), sans-serif
   font-size: $size
+  line-height: $line-height
   font-weight: $weight
   color: $color

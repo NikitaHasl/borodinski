@@ -32,15 +32,12 @@
 
   &__title
     @include font($weight: 700, $size: 4rem, $color: $color-text-dark)
-    line-height: 4rem
 
   &__subtitle
-    @include font($weight: 400, $size: 2rem, $color: $color-text-dark)
-    line-height: 2.7rem
+    @include font($weight: 400, $size: 2rem, $color: $color-text-dark, $line-height: 2.7rem)
 
   &__footnote
-    @include font($weight: 400, $size: 2rem, $color: rgba($color-text-dark, 0.3))
-    line-height: 2.7rem
+    @include font($weight: 400, $size: 2rem, $color: rgba($color-text-dark, 0.3), $line-height: 2.7rem)
 
   &__item
     padding: 2.5rem 3.5rem
@@ -51,8 +48,6 @@
 
   &__value
     @include font($weight: 700, $size: 7.2rem, $color: $color-text-light)
-    line-height: 7.2rem
 
   &__description
-    @include font($weight: 400, $size: 2rem, $color: $color-text-light)
-    line-height: 2.7rem
+    @include font($weight: 400, $size: 2rem, $color: $color-text-light, $line-height: 2.7rem)
