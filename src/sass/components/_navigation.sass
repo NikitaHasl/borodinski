@@ -3,7 +3,7 @@
 
 .navigation
   padding: 2.5rem 1rem
-  background-color: $color-dark
+  background-color: $color-bg-dark
 
   &__wrapper
     display: flex
@@ -14,7 +14,7 @@
     gap: 8rem
 
   &__link
-    @include font($weight: 700, $size: 1.8rem, $color: $color-white)
+    @include font($weight: 700, $size: 1.8rem, $color: $color-text-light)
     text-transform: uppercase
     transition: opacity .3s
     position: relative
@@ -28,7 +28,7 @@
         top: 4rem
         width: 100%
         height: .3rem
-        background-color: #826550
+        background-color: $color-accent
 
     &:hover
       opacity: .8

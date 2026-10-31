@@ -1,0 +1,58 @@
+@use "../abstracts/variables" as *
+@use "../abstracts/mixins" as *
+
+.stats
+  display: grid
+  grid-template-columns: repeat(3, 1fr)
+  grid-template-rows: repeat(2, 16rem)
+  position: relative
+  background-color: $color-bg-less-dark
+
+  &::before
+    content: ""
+    display: block
+    position: absolute
+    width: 2.3rem
+    height: 2.3rem
+    left: -2.2rem
+    top: 3rem
+    background-color: $color-bg-light
+    clip-path: polygon(0% 0%, 100% 0%, 100% 100%)
+
+  &__intro
+    grid-row: 1 / -1
+    display: flex
+    flex-direction: column
+    justify-content: space-between
+    padding: 3rem
+    background-color: $color-bg-light
+
+    & > *
+      max-width: 22rem
+
+  &__title
+    @include font($weight: 700, $size: 4rem, $color: $color-text-dark)
+    line-height: 4rem
+
+  &__subtitle
+    @include font($weight: 400, $size: 2rem, $color: $color-text-dark)
+    line-height: 2.7rem
+
+  &__footnote
+    @include font($weight: 400, $size: 2rem, $color: rgba($color-text-dark, 0.3))
+    line-height: 2.7rem
+
+  &__item
+    padding: 2.5rem 3.5rem
+    &_light
+      background-color: rgba($color-bg-light, 0.12)
+    &_dark-light
+      background-color: rgba($color-bg-light, 0.05)
+
+  &__value
+    @include font($weight: 700, $size: 7.2rem, $color: $color-text-light)
+    line-height: 7.2rem
+
+  &__description
+    @include font($weight: 400, $size: 2rem, $color: $color-text-light)
+    line-height: 2.7rem
