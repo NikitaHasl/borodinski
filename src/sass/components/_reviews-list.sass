@@ -1,0 +1,51 @@
+@use "../abstracts/variables" as *
+@use "../abstracts/mixins" as *
+
+.reviews
+  &__slider
+    display: flex
+    justify-content: space-between
+    gap: 2rem
+
+  &__arrow
+    border: .1rem solid $color-border-light
+    padding: 0 2rem
+    cursor: pointer
+
+  &__viewport
+    width: 100%
+
+  &__item
+    border: .1rem solid $color-border-light
+    display: flex
+
+  &__img
+    max-width: 25rem
+
+  &__body
+    padding: 3.5rem 7rem
+
+  &__author
+    @include font($weight: 700, $size: 2.4rem, $color: $color-text-dark, $line-height: 2.7rem)
+
+  &__text
+    @include font($weight: 400, $size: 1.8rem, $color: $color-text-dark, $line-height: 2.7rem)
+
+  &__pagination
+    display: flex
+    justify-content: center
+    gap: 2.5rem
+  &__dot
+    cursor: pointer
+
+    &::after
+      content: ""
+      display: block
+      width: 1rem
+      height: 1rem
+      border: .1rem solid #353535
+      transform: rotate(45deg)
+
+    &_current
+      &::after
+        background-color: #353535
