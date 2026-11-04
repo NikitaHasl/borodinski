@@ -2,14 +2,29 @@
 @use "../abstracts/mixins" as *
 
 .button-signin
-  display: inline-flex
+  --color-text: #{$color-text-light}
+  --color-bg: transparent
+
+  display: flex
+  justify-content: center
   gap: 2rem
+  padding: 3rem 2.5rem
+  background-color: var(--color-bg)
   cursor: pointer
+  transition: all .4s
+
+  &:hover
+    --color-text: #{$color-text-dark}
+    --color-bg: #{$color-bg-light}
+
+  &:active
+    --color-text: #{rgba($color-text-dark , .3)}
 
   &__icon
-    max-width: 1.6rem
-    max-height: 1.6rem
+    color: var(--color-text)
+    transition: color .4s
 
   &__text
-    @include font($weight: 700, $size: 1.8rem, $color: $color-text-light)
+    @include font($weight: 700, $size: 1.8rem, $color: var(--color-text))
     text-transform: uppercase
+    transition: color .4s

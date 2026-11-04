@@ -7,10 +7,22 @@
     grid-template-columns: repeat(3, 1fr)
     gap: 4rem
 
-  &__item
+  &__link
     display: flex
     align-items: flex-start
     gap: 2rem
+    cursor: pointer
+    transition: filter .3s
+
+    --news-text-color: #{$color-text-dark}
+    --news-date-bg-color: #{$color-bg-dark}
+
+    &:hover
+      --news-text-color: #{$color-accent}
+      --news-date-bg-color: #{$color-accent}
+
+    &:active
+      filter: brightness(70%)
 
   &__date
     display: inline-flex
@@ -18,8 +30,9 @@
     align-items: center
     margin-top: 1rem
     padding: 1rem 1.2rem 1.3rem
-    background-color: $color-bg-dark
+    background-color: var(--news-date-bg-color)
     clip-path: polygon(0% 0%, 100% 0%, 100% 85%, 50% 100%, 0% 85%)
+    transition: background-color .3s
 
     &-day
       @include font($weight: 700, $size: 3rem, $color: $color-text-light)
@@ -28,4 +41,5 @@
       @include font($weight: 400, $size: 1.6rem, $color: $color-text-light)
 
   &__text
-    @include font($weight: 400, $size: 1.8rem, $color: $color-text-dark, $line-height: 2.7rem)
+    @include font($weight: 400, $size: 1.8rem, $color: var(--news-text-color), $line-height: 2.7rem)
+    transition: color .3s
