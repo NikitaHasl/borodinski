@@ -14,10 +14,16 @@
 
   &__viewport
     width: 100%
+    border: .1rem solid $color-border-light
+    overflow: hidden
+
+  &__list
+    display: flex
 
   &__item
-    border: .1rem solid $color-border-light
     display: flex
+    width: 100%
+    flex-shrink: 0
 
   &__img
     max-width: 25rem

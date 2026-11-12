@@ -1,11 +1,17 @@
-@use "../abstracts/mixins"
+@use "../abstracts/mixins" as *
+@use "../abstracts/variables" as *
 
 html
   font-size: 62.5%
-  @include mixins.respond(tab-land)
+  @include respond(tab-land)
     font-size: 50%
-  @include mixins.respond(phone)
+  @include respond(phone)
     font-size: 43.75%
+  scrollbar-gutter: stable
+  background-color: $color-border-dark
+
+body:has(dialog[open])
+  overflow: hidden
 
 .container
   max-width: 100rem

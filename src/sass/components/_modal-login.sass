@@ -1,0 +1,93 @@
+@use "../abstracts/variables" as *
+@use "../abstracts/mixins" as *
+
+.modal-login
+  position: fixed
+  top: 50%
+  left: 50%
+  transform: translate(-50%, -50%)
+  width: 100%
+  max-width: 46rem
+  background-color: transparent
+  border: none
+  overflow: visible
+
+  &__panel
+    position: relative
+    display: flex
+    flex-direction: column
+    align-items: center
+    padding: 6rem 7rem
+    background-color: $color-bg-light
+    box-shadow: 0 3rem 5rem rgba($color-bg-dark, .75)
+
+  &__close
+    position: absolute
+    top: 5rem
+    right: -10rem
+
+  &__cross
+    display: flex
+    justify-content: center
+    align-items: center
+    width: 2.6rem
+    height: 2.6rem
+    cursor: pointer
+    &::after,
+    &::before
+      content: ""
+      position: absolute
+      display: block
+      width: 3.5rem
+      height: .2rem
+      background-color: $color-bg-light
+      border-radius: 50%
+
+    &::after
+      transform: rotate(45deg)
+
+    &::before
+      transform: rotate(-45deg)
+
+  &__title
+    @include font($weight: 700, $size: 4rem, $color: $color-text-dark)
+
+  &__description
+    @include font($weight: 400, $size: 1.8rem, $color: $color-text-dark)
+
+  &__form
+    width: 100%
+
+  &__field
+    display: block
+    position: relative
+
+  &__input-icon
+    position: absolute
+    right: 2rem
+    top: 50%
+    transform: translateY(-50%)
+    pointer-events: none
+    color: #000
+    transition: all 0.3s
+
+    .modal-login__input-text:focus ~ &,
+    .modal-login__input-text:not(:placeholder-shown) ~ &
+      opacity: 0
+      visibility: hidden
+  &__options
+    display: flex
+    justify-content: space-between
+    align-items: center
+
+  &__remember
+    @include font($weight: 400, $size: 1.8rem, $color: $color-text-dark)
+    display: flex
+    gap: 1.5rem
+    align-items: center
+    cursor: pointer
+    user-select: none
+
+  &__forgot
+    @include font($weight: 400, $size: 1.8rem, $color: $color-text-dark)
+    text-decoration: underline

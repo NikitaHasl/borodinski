@@ -1,0 +1,20 @@
+@use "../abstracts/variables" as *
+@use "../abstracts/mixins" as *
+
+.input-text
+  @include font($weight: 400, $size: 2.2rem, $color: $color-text-dark)
+  width: 100%
+  padding: 2rem 2.5rem
+  border: .1rem solid $color-border-light
+  background-color: $color-bg-light
+  transition: border .3s, outline .3s
+
+  &::placeholder
+    color: $color-text-dark
+
+  &:focus-visible
+    outline: .4rem solid $color-focus-outline
+    outline-offset: 0
+
+  &:hover
+    border-color: $color-accent

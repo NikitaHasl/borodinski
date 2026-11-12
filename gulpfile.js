@@ -7,6 +7,8 @@ import autoprefixer from "gulp-autoprefixer";
 import cleanCss from "gulp-clean-css";
 import plumber from "gulp-plumber";
 import htmlmin from "gulp-htmlmin";
+import terser from "gulp-terser";
+import concat from "gulp-concat";
 import ttf2woff2 from "gulp-ttf2woff2";
 import imagemin, { mozjpeg, optipng, svgo } from "gulp-imagemin";
 import { deleteAsync } from "del";
@@ -19,13 +21,18 @@ const browser = browserSync.create();
 // serve - папка локального сервера, для разоаботки
 // dest - итоговая сборка
 const paths = {
+	html: {
+		src: "src/index.html",
+		serve: "serve",
+		dest: "dist",
+	},
 	styles: {
 		src: "src/sass/**/*.sass",
 		serve: "serve",
 		dest: "dist",
 	},
-	html: {
-		src: "src/index.html",
+	scripts: {
+		src: "src/js/*.js",
 		serve: "serve",
 		dest: "dist",
 	},
@@ -89,6 +96,26 @@ const htmlBuild = () => {
 			}),
 		)
 		.pipe(gulp.dest(paths.html.dest));
+};
+
+// Компиляция скриптов для разработки, plumber - чтобы не падала сборка, sourcemap для отслкживания и собираем в один файл bundle.js
+const scriptsDev = () => {
+	return gulp
+		.src(paths.scripts.src)
+		.pipe(plumber())
+		.pipe(sourcemaps.init())
+		.pipe(concat("bundle.js"))
+		.pipe(sourcemaps.write("."))
+		.pipe(gulp.dest(paths.scripts.serve));
+};
+
+// Компиляция скриптов для production, собираем в один файл bundle.js и сжимаем его
+const scriptsBuild = () => {
+	return gulp
+		.src(paths.scripts.src)
+		.pipe(concat("bundle.js"))
+		.pipe(terser())
+		.pipe(gulp.dest(paths.scripts.dest));
 };
 
 // Картинки для разработки. Просто переносим
@@ -160,18 +187,19 @@ const watch = () => {
 	gulp.watch(paths.html.src, htmlDev);
 	gulp.watch(paths.images.src, imagesDev).on("change", browser.reload);
 	gulp.watch(paths.fonts.src, fontsDev).on("change", browser.reload);
+	gulp.watch(paths.scripts.src, scriptsDev).on("change", browser.reload);
 };
 
 // == ЭКСПОРТЫ ==
 
 // Команда dev для разработки
 export const dev = gulp.series(
-	gulp.parallel(htmlDev, stylesDev, imagesDev, fontsDev), // Компилируем файлы
+	gulp.parallel(htmlDev, scriptsDev, stylesDev, imagesDev, fontsDev), // Компилируем файлы
 	gulp.parallel(watch, serve), // Запускаем сервер и следим за изменениями
 );
 
 // Команда build для сборки
 export const build = gulp.series(
 	clean, // очищаем папку перед каждой сборкой
-	gulp.parallel(htmlBuild, stylesBuild, imagesBuild, fontsBuild), // Компилируем и собираем файлы
+	gulp.parallel(htmlBuild, scriptsBuild, stylesBuild, imagesBuild, fontsBuild), // Компилируем и собираем файлы
 );

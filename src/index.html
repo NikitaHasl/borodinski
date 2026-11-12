@@ -42,7 +42,8 @@
 
           </ul>
 
-          <button class="button-signin">
+          <button class="button-signin" type="button" id="modal-login-open" aria-haspopup="dialog"
+            aria-controls="login-modal">
             <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg"
               class="button-signin__icon">
               <g opacity="0.3">
@@ -194,15 +195,36 @@
           </button>
 
           <div class="reviews__viewport">
+
             <ul class="reviews__list">
 
               <li class="reviews__item">
-                <img src="imgs/profile-photo.jpg" alt="" class="reviews__img">
+                <img src="imgs/profile-photo-1.jpg" alt="" class="reviews__img">
                 <div class="reviews__body">
                   <h3 class="reviews__author margin-bottom-xs">Иван Иванов</h3>
                   <p class="reviews__text">Отличный барбершоп! Мастер внимательно выслушал мои пожелания и сделал
                     именно такую стрижку, какую я хотел. Атмосфера
                     приятная, обслуживание на высоте — обязательно вернусь ещё!</p>
+                </div>
+              </li>
+
+              <li class="reviews__item">
+                <img src="imgs/profile-photo-2.jpg" alt="" class="reviews__img">
+                <div class="reviews__body">
+                  <h3 class="reviews__author margin-bottom-xs">Сергей Трепов</h3>
+                  <p class="reviews__text">Хожу в этот барбершоп уже полгода, и ни разу не пожалел. Мастера всегда
+                    понимают, чего я хочу, и делают чёткий переход
+                    даже на сложной форме. Отдельный респект за атмосферу.</p>
+                </div>
+              </li>
+
+              <li class="reviews__item">
+                <img src="imgs/profile-photo-3.jpg" alt="" class="reviews__img">
+                <div class="reviews__body">
+                  <h3 class="reviews__author margin-bottom-xs">Ирина Савина</h3>
+                  <p class="reviews__text">Приводила сюда мужа, но в итоге сама записалась на укладку. Приятно удивил
+                    сервис: администратор предложила чай, а
+                    мастер дала дельные советы по уходу за волосами. Очень уютно.</p>
                 </div>
               </li>
 
@@ -216,12 +238,6 @@
         </div>
 
         <div class="reviews__pagination">
-
-          <button class="reviews__dot reviews__dot_current" type="button" aria-label="Первый отзыв"
-            aria-curent="true"></button>
-          <button class="reviews__dot" type="button" aria-label="Второй отзыв"></button>
-          <button class="reviews__dot" type="button" aria-label="Третий отзыв"></button>
-
         </div>
       </div>
 
@@ -262,6 +278,63 @@
     </div>
 
   </footer>
+  <dialog class="modal-login" id="modal-login" aria-labelledby="modal-login__title">
+
+    <div class="modal-login__panel">
+
+      <button class="modal-login__close">
+        <span class="modal-login__cross"></span>
+      </button>
+
+      <h2 class="modal-login__title margin-bottom-s">ЛИЧНЫЙ КАБИНЕТ</h2>
+      <p class="modal-login__description margin-bottom-s">Введите свой логин и пароль, чтобы войти</p>
+
+      <form action="#" class="modal-login__form">
+
+        <label class="modal-login__field margin-bottom-xs">
+          <span class="visual-hidden">Логин</span>
+          <input type="text" class="modal-login__input-text input-text" name="username" placeholder="Логин"
+            autocomplete="username" required>
+          <svg class="modal-login__input-icon" width="14" height="16" viewBox="0 0 14 16" fill="none"
+            xmlns="http://www.w3.org/2000/svg">
+            <path
+              d="M12.4822 12.4768L9.57478 11.0874C9.30056 10.9562 9.13013 10.6927 9.13013 10.3994V9.41585C9.19983 9.3344 9.27317 9.2416 9.34896 9.1392C9.72604 8.63011 10.0283 8.06342 10.248 7.45222C10.6774 7.264 10.9562 6.85818 10.9562 6.4V5.23636C10.9562 4.95622 10.8467 4.6848 10.6519 4.47273V2.92538C10.6689 2.76538 10.7359 1.81295 10.0152 1.0272C9.39004 0.3456 8.37565 0 6.9997 0C5.62374 0 4.60935 0.3456 3.98422 1.02691C3.26352 1.81265 3.33048 2.76538 3.34752 2.92509V4.47244C3.15274 4.68451 3.04317 4.95593 3.04317 5.23607V6.39971C3.04317 6.75375 3.21148 7.08393 3.49878 7.30415C3.77756 8.35927 4.361 9.15433 4.56491 9.40945V10.3721C4.56491 10.6537 4.40422 10.912 4.14583 11.047L1.43074 12.4625C0.54813 12.9228 0 13.8054 0 14.7665V16H14V14.8239C13.9997 13.8237 13.4181 12.9242 12.4822 12.4768Z"
+              fill="black" />
+          </svg>
+        </label>
+
+        <label class="modal-login__field margin-bottom-s">
+          <span class="visual-hidden">Пароль</span>
+          <input type="password" class="modal-login__input-text input-text" name="password" placeholder="Пароль"
+            autocomplete="current-password" required>
+          <svg class="modal-login__input-icon" width="14" height="16" viewBox="0 0 14 16" fill="none"
+            xmlns="http://www.w3.org/2000/svg">
+            <path
+              d="M13.3636 5.71429H12.7272V5.14285C12.7272 2.30253 10.1631 0 6.99998 0C3.8369 0 1.27271 2.30253 1.27271 5.14285V5.71429H0.636375C0.284909 5.71429 0 5.97013 0 6.28573V15.4286C0 15.7442 0.284909 16 0.636375 16H13.3636C13.7151 16 14 15.7442 14 15.4286V6.2857C14 5.97013 13.7151 5.71429 13.3636 5.71429ZM8.79989 10.85C8.60768 11.3383 8.18004 11.7223 7.63636 11.8949V13.1429C7.63636 13.4585 7.35145 13.7143 6.99998 13.7143C6.64852 13.7143 6.36361 13.4585 6.36361 13.1429V11.8949C5.36954 11.5793 4.8486 10.5998 5.20007 9.70717C5.55153 8.81454 6.64229 8.34676 7.63636 8.66236C8.63043 8.97796 9.15136 9.95741 8.79989 10.85ZM11.4545 5.71429H2.54546V5.14285C2.54546 2.9337 4.53983 1.14285 7.00002 1.14285C9.46021 1.14285 11.4545 2.9337 11.4545 5.14285V5.71429Z"
+              fill="black" />
+          </svg>
+        </label>
+
+        <div class="modal-login__options margin-bottom-m">
+
+          <label class="modal-login__remember">
+            <input type="checkbox" class="input-checkbox" name="remember">
+            <span>Запомните меня</span>
+          </label>
+
+          <a href="#" class="modal-login__forgot">Я забыл пароль!</a>
+
+        </div>
+
+        <button type="submit" class="button-submit">ВОЙТИ В ЛИЧНЫЙ КАБИНЕТ</button>
+
+      </form>
+
+    </div>
+
+  </dialog>
+  <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+  <script src="bundle.js"></script>
 </body>
 
 </html>

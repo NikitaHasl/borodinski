@@ -1,0 +1,27 @@
+@use "../abstracts/variables" as *
+@use "../abstracts/mixins" as *
+@use "sass:color"
+
+.button-submit
+  @include font($weight: 700, $size: 1.8rem, $color: $color-text-light)
+  text-transform: uppercase
+  padding: 2rem
+  width: 100%
+  background-color: $color-accent
+  cursor: pointer
+  transition: color .3s, background-color .3s
+
+  &:focus-visible
+    outline: .4rem solid $color-focus-outline
+    outline-offset: 0
+
+  &:hover
+    background-color: color.scale($color-accent, $lightness: -20%)
+
+  &:active
+    color: color.scale($color-text-light, $lightness: -20%)
+
+  &:disabled
+    background-color: #AEAEAE
+    cursor: not-allowed
+    pointer-events: none
