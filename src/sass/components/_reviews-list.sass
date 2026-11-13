@@ -7,6 +7,9 @@
     justify-content: space-between
     gap: 2rem
 
+    @include respond(tab-port)
+      gap: 0
+
   &__arrow
     border: .1rem solid $color-border-light
     padding: 0 2rem
@@ -25,11 +28,27 @@
     width: 100%
     flex-shrink: 0
 
+  &__photo
+    @include respond(tab-port)
+      display: flex
+      justify-content: center
+      align-items: center
+      padding: 0 3rem
+
   &__img
     max-width: 25rem
 
+    @include respond(tab-port)
+      max-width: 10rem
+      aspect-ratio: 1 / 1
+      border-radius: 50%
+      object-fit: cover
+
   &__body
     padding: 3.5rem 7rem
+    @include respond(tab-port)
+      padding-left: 0
+      padding-right: .5rem
 
   &__author
     @include font($weight: 700, $size: 2.4rem, $color: $color-text-dark, $line-height: 2.7rem)

@@ -1,12 +1,17 @@
+@use "../abstracts/variables" as *
+@use "../abstracts/mixins" as *
 
 .header
-  min-height: 90vh
+  min-height: 72rem
   background: url('imgs/bg-header.png') center / cover no-repeat
+  @include respond(tab-port)
+    min-height: 47rem
 
   &__logo
     display: block
     width: fit-content
     margin: 0 auto
 
-    &-img
-      max-width: 37rem
+    &-mustache
+      @include respond(tab-port)
+        display: none

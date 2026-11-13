@@ -6,11 +6,15 @@
 
   &__wrapper
     display: flex
-    justify-content: space-between
-    gap: .1rem
+    justify-content: space-evenly
+
+    @include respond(tab-port)
+      justify-content: space-between
 
   &__list
     display: flex
+    @include respond(tab-port)
+      gap: 3rem
 
   &__link
     @include font($weight: 700, $size: 1.8rem, $color: $color-text-light)
@@ -18,8 +22,11 @@
     display: flex
     align-items: center
     padding: 3rem
-    transition: all .4s
+    transition: color .4s, background-color .4s
     position: relative
+
+    @include respond(tab-port)
+      padding: 3rem 0
 
     &_current
 
@@ -32,13 +39,17 @@
         height: .3rem
         background-color: $color-accent
 
+        @include respond(tab-port)
+          width: 100%
+
     &:hover
       color: $color-text-dark
       background-color: $color-bg-light
+      @include respond(tab-port)
+        color: $color-accent
+        background-color: transparent
 
     &:active
       color: rgba($color-text-dark, .3)
-
-  &__signin
-    display: inline-flex
-    gap: 2rem
+      @include respond(tab-port)
+        color: rgba($color-text-light, .3)

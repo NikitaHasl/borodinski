@@ -11,20 +11,31 @@
   padding: 3rem 2.5rem
   background-color: var(--color-bg)
   cursor: pointer
-  transition: all .4s
+  transition: color .4s, background-color .4s
 
   &:hover
     --color-text: #{$color-text-dark}
     --color-bg: #{$color-bg-light}
 
+    @include respond(tab-port)
+      --color-text: #{$color-accent}
+      --color-bg: transparent
+
   &:active
     --color-text: #{rgba($color-text-dark , .3)}
-
+    @include respond(tab-port)
+      --color-text: #{rgba($color-text-light , .3)}
   &__icon
     color: var(--color-text)
+    opacity: .3
     transition: color .4s
+    @include respond(tab-port)
+      opacity: 1
 
   &__text
     @include font($weight: 700, $size: 1.8rem, $color: var(--color-text))
     text-transform: uppercase
     transition: color .4s
+
+    @include respond(tab-port)
+      display: none

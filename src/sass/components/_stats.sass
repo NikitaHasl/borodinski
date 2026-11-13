@@ -8,6 +8,10 @@
   position: relative
   background-color: $color-bg-less-dark
 
+  @include respond(tab-port)
+    grid-template-columns: repeat(2, 1fr)
+    grid-template-rows: repeat(3, 16rem)
+
   &::before
     content: ""
     display: block
@@ -21,11 +25,16 @@
 
   &__intro
     grid-row: 1 / -1
-    display: flex
-    flex-direction: column
+    display: grid
     justify-content: space-between
     padding: 3rem
     background-color: $color-bg-light
+
+    @include respond(tab-port)
+      grid-row: inherit
+      grid-column: 1 / -1
+      gap: 1rem
+      grid-template-columns: repeat(2, 1fr)
 
     & > *
       max-width: 22rem
@@ -35,6 +44,9 @@
 
   &__subtitle
     @include font($weight: 400, $size: 2rem, $color: $color-text-dark, $line-height: 2.7rem)
+
+    @include respond(tab-port)
+      justify-self: center
 
   &__footnote
     @include font($weight: 400, $size: 2rem, $color: rgba($color-text-dark, 0.3), $line-height: 2.7rem)

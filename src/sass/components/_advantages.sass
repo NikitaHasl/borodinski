@@ -7,6 +7,10 @@
     grid-template-columns: repeat(3, 1fr)
     justify-items: center
 
+    @include respond(tab-port)
+      display: flex
+      flex-direction: column
+
   &__item
     display: flex
     flex-direction: column
@@ -14,7 +18,10 @@
     align-items: center
     position: relative
     padding: 3.5rem 4rem
-    max-width: 33rem
+
+    @include respond(tab-port)
+      flex-direction: row
+      gap: 3rem
 
     &:not(:last-child)::after
       content: ''
@@ -26,12 +33,31 @@
       background-color: $color-bg-light
       opacity: .1
 
+      @include respond(tab-port)
+        width: 90%
+        height: .1rem
+        bottom: 0
+        right: auto
+
   &__icon
     max-width: 9.5rem
+    margin-bottom: 3.5rem
+
+    @include respond(tab-port)
+      margin-bottom: 0
 
   &__title
     @include font($weight: 700, $size: 3rem, $color: $color-text-light)
+    margin-bottom: 1.6rem
+    text-align: center
+
+    @include respond(tab-port)
+      margin-bottom: 1.2rem
+      text-align: start
 
   &__description
     @include font($weight: 400, $size: 2rem, $color: $color-text-light, $line-height: 2.7rem)
     text-align: center
+
+    @include respond(tab-port)
+      text-align: start

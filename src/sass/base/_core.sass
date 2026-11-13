@@ -3,17 +3,16 @@
 
 html
   font-size: 62.5%
-  @include respond(tab-land)
-    font-size: 50%
-  @include respond(phone)
-    font-size: 43.75%
   scrollbar-gutter: stable
-  background-color: $color-border-dark
 
 body:has(dialog[open])
   overflow: hidden
+  background-color: $color-border-dark
 
 .container
   max-width: 100rem
   margin: 0 auto
   padding: 0 .5rem
+
+  @include respond(tab-port)
+    max-width: 64rem
