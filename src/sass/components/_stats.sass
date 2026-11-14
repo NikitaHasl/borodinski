@@ -42,6 +42,12 @@
   &__title
     @include font($weight: 700, $size: 4rem, $color: $color-text-dark)
 
+    @include respond(tab-land)
+      font-size: 3.2rem
+
+    @include respond(tab-port)
+      font-size: 4rem
+
   &__subtitle
     @include font($weight: 400, $size: 2rem, $color: $color-text-dark, $line-height: 2.7rem)
 
@@ -53,13 +59,24 @@
 
   &__item
     padding: 2.5rem 3.5rem
+
+    @include respond(tab-land)
+      padding: 2rem 3rem
+
     &_light
       background-color: rgba($color-bg-light, 0.12)
+
     &_dark-light
       background-color: rgba($color-bg-light, 0.05)
 
   &__value
     @include font($weight: 700, $size: 7.2rem, $color: $color-text-light)
+
+    @include respond(tab-land)
+      font-size: 5rem
+
+    @include respond(tab-port)
+      font-size: 6rem
 
   &__description
     @include font($weight: 400, $size: 2rem, $color: $color-text-light, $line-height: 2.7rem)
